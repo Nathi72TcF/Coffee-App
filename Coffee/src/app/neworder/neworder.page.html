@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title align="center">New Order</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let itiye of coffeeArray">
+    <ion-card-header>
+      <ion-card-title align="center">{{ itiye.name }}</ion-card-title>
+    </ion-card-header>
+      
+    <ion-card-content>
+      <img src="../../assets/images/{{ itiye.pic }}" style="width:100%;height:auto">
+      <h3>Price : {{ itiye.price }}</h3>
+      <ion-button [routerLink]="['/placeorder',itiye.id]" (click) = "setName(itiye)">
+        Buy
+        <ion-icon slot="end" name="basket"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<!-- <ion-content>
+    <p *ngFor="let itiye of coffeeArray">
+        {{ itiye.name }}
+        {{ itiye.pic }}
+        {{ itiye.price }}
+    </p>
+</ion-content> -->

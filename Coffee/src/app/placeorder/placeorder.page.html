@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title align="center">placeorder</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="id">
+
+    <ion-card-header>
+      <ion-card-subtitle>{{ id }}</ion-card-subtitle>
+      <ion-card-title align="center">{{ coffeeArray.name }}</ion-card-title>
+    </ion-card-header>
+          
+    <ion-card-content>
+      <img src="../../assets/images/{{ coffeeArray.pic }}" style="width:100%;height:auto">
+      <h3>Price : {{ coffeeArray.price }}</h3>
+      <!-- sugar code -->
+       <ion-list>
+          <ion-radio-group (ionChange)="shukela($event)">
+            <ion-list-header>
+              <ion-label><strong><b>Sugar</b></strong></ion-label>
+            </ion-list-header>
+        
+            <ion-item>
+              <ion-label>1</ion-label>
+              <ion-radio slot="start" value="1" checked></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>2</ion-label>
+              <ion-radio slot="start" value="2"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>3</ion-label>
+              <ion-radio slot="start" value="3"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>4</ion-label>
+                <ion-radio slot="start" value="4"></ion-radio>
+              </ion-item>
+          </ion-radio-group>
+      </ion-list>
+
+      <!-- Milk -->
+      <ion-list>
+          <ion-radio-group (ionChange)="milk($event)">
+            <ion-list-header>
+              <ion-label><strong><b>Milk</b></strong></ion-label>
+            </ion-list-header>
+        
+            <ion-item>
+              <ion-label>Yes</ion-label>
+              <ion-radio slot="start" value="yes" checked></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>No</ion-label>
+              <ion-radio slot="start" value="no"></ion-radio>
+            </ion-item>
+
+          </ion-radio-group>
+        </ion-list>
+
+      <!-- quantity -->
+      <ion-list>
+        <ion-radio-group>
+            <ion-list-header>
+              <ion-label><strong><b>How Many Cups</b></strong></ion-label>
+            </ion-list-header>
+
+            <ion-icon color="primary" name="remove-circle" (click)="decrement()"></ion-icon>
+              {{ quantity }}
+            <ion-icon color="primary" name="add-circle" (click)="increment()"></ion-icon><br>
+        </ion-radio-group>
+      </ion-list>
+
+      <!-- btn -->
+      <ion-button (click)="pushingorder(); TotalPrice() ">
+          Order
+        <ion-icon slot="end" name="basket"></ion-icon>
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <p *ngFor="let kofi of oderzz">
+      Total {{ kofi.name }} {{ kofi.price }}
+  </p>
+
+</ion-content>
+
+
+
