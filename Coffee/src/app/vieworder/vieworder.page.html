@@ -1,9 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>vieworder</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title align="center">vieworder</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let kofi of coffeeArray">
+    <ion-card-header>
+      <ion-card-subtitle>{{ kofi.coffeeName }}</ion-card-subtitle>
+      <ion-card-title>R{{ kofi.konke }}.00</ion-card-title>
+    </ion-card-header>
+      
+    <ion-card-content>
+      Sugar : {{ kofi.shugs }}<br>
+      Milk : {{ kofi.meleke }}<br>
+      Quantinty : {{ kofi.ngakhi }}<br>
+      Coffee Price : {{ kofi.malini }}<br>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+     <!-- view order btn -->
+     <ion-button [routerLink]="['/neworder']">
+      Order Page
+    <ion-icon slot="end" name="basket"></ion-icon>
+  </ion-button>
+  </ion-card>
 </ion-content>

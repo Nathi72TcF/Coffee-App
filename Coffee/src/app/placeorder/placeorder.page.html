@@ -77,9 +77,14 @@
         </ion-radio-group>
       </ion-list>
 
-      <!-- btn -->
-      <ion-button (click)="pushingorder(); TotalPrice() ">
+      <!-- order btn -->
+      <ion-button (click)="pushingorder(); TotalPrice(); presentToastWithOptions() ">
           Order
+        <ion-icon slot="end" name="basket"></ion-icon>
+      </ion-button>
+      <!-- view order btn -->
+      <ion-button [routerLink]="['/vieworder']">
+          View Order
         <ion-icon slot="end" name="basket"></ion-icon>
       </ion-button>
 
@@ -87,7 +92,7 @@
   </ion-card>
 
   <p *ngFor="let kofi of oderzz">
-      Total {{ kofi.name }} {{ kofi.price }}
+      Total {{ kofi.coffeeName }} {{ kofi.konke }}
   </p>
 
 </ion-content>

@@ -1,3 +1,4 @@
+import { OrderzService } from './../Service/orderz.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VieworderPage implements OnInit {
 
-  constructor() { }
+  coffeeArray;
+
+  constructor(public orderzService: OrderzService) {
+    this.coffeeArray = this.orderzService.getorders();
+   }
 
   ngOnInit() {
   }

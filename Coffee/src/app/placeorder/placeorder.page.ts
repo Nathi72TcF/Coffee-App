@@ -1,6 +1,8 @@
 import { OrderzService } from './../Service/orderz.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-placeorder',
@@ -21,7 +23,11 @@ export class PlaceorderPage implements OnInit {
   coffee;
   coffeeprice;
 
-  constructor(public orderzService: OrderzService, public route: ActivatedRoute) {
+  constructor(
+    public orderzService: OrderzService,
+    public route: ActivatedRoute,
+    public toastController: ToastController,
+    private router: Router) {
     this.coffeeArray = this.orderzService.getcoffees();
     this.coffee = this.orderzService.get_name();
     this.coffeeprice = this.orderzService.get_price();
@@ -89,7 +95,40 @@ export class PlaceorderPage implements OnInit {
       console.log(this.id);
     });
     console.log(this.coffeeArray);
+  }
 
+  // Toast Code
+  async presentToastWithOptions() {
+    const toast = await this.toastController.create({
+      message: 'Thanks for Shopping with us',
+      position: 'bottom',
+      buttons: [
+        {
+          side: 'start',
+          icon: 'cafe',
+          text: 'Order More Coffee',
+          handler: () => {
+            this.navigateNewOrder();
+          }
+        }, {
+          text: 'View Orders',
+          icon: 'eye',
+          handler: () => {
+            this.navigateOrder();
+          }
+        }
+      ]
+    });
+    toast.present();
+  }
+
+  // Navigation for TS
+  navigateOrder() {
+    this.router.navigate(['/vieworder']);
+  }
+
+  navigateNewOrder() {
+    this.router.navigate(['/neworder']);
   }
 
 }

@@ -44,13 +44,13 @@ export class OrderzService {
       meleke: milks,
       ngakhi: quantity,
       malini: coffeeprice,
-      konke: this.Total
+      konke: Total
     });
     console.log(this.orders);
   }
 
   TotalPrice(quantity) {
-    this.Total = this.Namezz * this.quantity;
+    this.Total = this.Namezz * quantity;
     return this.Total;
   }
 
