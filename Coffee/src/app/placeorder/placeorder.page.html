@@ -8,7 +8,7 @@
   <ion-card *ngIf="id">
 
     <ion-card-header>
-      <ion-card-subtitle>{{ id }}</ion-card-subtitle>
+      <!-- <ion-card-subtitle>{{ id }}</ion-card-subtitle> -->
       <ion-card-title align="center">{{ coffeeArray.name }}</ion-card-title>
     </ion-card-header>
           
@@ -71,22 +71,26 @@
               <ion-label><strong><b>How Many Cups</b></strong></ion-label>
             </ion-list-header>
 
-            <ion-icon color="primary" name="remove-circle" (click)="decrement()"></ion-icon>
+            <h1><b>
+              <ion-icon color="primary" name="remove-circle" (click)="decrement(); TotalPrice()"></ion-icon>
               {{ quantity }}
-            <ion-icon color="primary" name="add-circle" (click)="increment()"></ion-icon><br>
+            <ion-icon color="primary" name="add-circle" (click)="increment(); TotalPrice()"></ion-icon><br>
+            </b></h1>
         </ion-radio-group>
       </ion-list>
 
       <!-- order btn -->
-      <ion-button (click)="pushingorder(); TotalPrice(); presentToastWithOptions() ">
+      <ion-button (click)="pushingorder(); presentToastWithOptions() " >
           Order
         <ion-icon slot="end" name="basket"></ion-icon>
-      </ion-button>
+      </ion-button><br>
+      Total Price {{ Total }}
       <!-- view order btn -->
-      <ion-button [routerLink]="['/vieworder']">
+      <!-- <ion-button [routerLink]="['/vieworder']">
           View Order
         <ion-icon slot="end" name="basket"></ion-icon>
-      </ion-button>
+      </ion-button> -->
+      <!-- <h2 align="center">Total Price R</h2> -->
 
     </ion-card-content>
   </ion-card>

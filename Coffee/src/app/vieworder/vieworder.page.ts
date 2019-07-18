@@ -9,12 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class VieworderPage implements OnInit {
 
   coffeeArray;
+  check = true;
 
   constructor(public orderzService: OrderzService) {
     this.coffeeArray = this.orderzService.getorders();
+    if (this.coffeeArray.lenght <= 0) {
+      this.check = false;
+    }
    }
 
   ngOnInit() {
   }
+
+
 
 }
